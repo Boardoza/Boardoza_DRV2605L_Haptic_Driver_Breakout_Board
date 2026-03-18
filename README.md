@@ -1,4 +1,4 @@
-# Boardoza DRV2605L Haptic Motor Driver – Breakout Board
+# Boardoza DRV2605L Haptic Motor Driver Breakout Board
 
 The **Boardoza DRV2605L Haptic Driver Breakout Board** is based on the **Texas Instruments DRV2605L**, a powerful and intelligent haptic motor driver designed specifically for **ERM (Eccentric Rotating Mass)** and **LRA (Linear Resonant Actuator)** vibration motors. Unlike simple on/off motor drivers, the DRV2605L integrates a built-in waveform library and smart-loop control engine to generate advanced vibration effects such as clicks, double-clicks, ramps, buzz patterns, and audio-synchronized feedback.
 
@@ -14,14 +14,14 @@ Unlike standard motor drivers for DC or stepper motors, the DRV2605 is optimized
 
 ## Key Features
  
-- I²C-controlled digital playback engine with waveform sequencer  
-- Real-time playback via I²C, PWM, or analog input  
-- Open-loop (ERM) and closed-loop (LRA) drive modes  
-- Smart-Loop™ control with automatic overdrive and braking  
-- Automatic resonance tracking and actuator diagnostics (LRA)  
-- Automatic level calibration  
-- Battery voltage compensation   
-- Differential H-bridge output (OUT+, OUT−)
+- **I²C-Controlled Digital Playback Engine:** Includes a waveform sequencer for flexible haptic pattern generation.  
+- **Real-Time Playback Options:** Supports control via I²C, PWM, or analog input.  
+- **Dual Drive Modes:** Operates in open-loop (ERM) and closed-loop (LRA) configurations.  
+- **Smart-Loop™ Control:** Provides automatic overdrive and braking for optimized performance.  
+- **Automatic Resonance Tracking:** Includes actuator diagnostics for LRA operation.  
+- **Automatic Level Calibration:** Ensures consistent output performance.  
+- **Battery Voltage Compensation:** Maintains stable operation under varying supply conditions.  
+- **Differential H-Bridge Output:** Features OUT+ and OUT− for driving actuators.    
 
 
 ---
@@ -32,7 +32,7 @@ Unlike standard motor drivers for DC or stepper motors, the DRV2605 is optimized
 **Manufacturer:** Boardoza  
 **Manufacturer IC:** Texas Instruments  
 **Device Type:** Haptic Driver IC  
-**Functions:** Smart Haptic Motor Driver Breakout Board  
+**Functions:** Smart Haptic Motor Driver    
 **Input Voltage (VDD):** 2.0V – 5.2V  
 **Interface:** I²C (Standard & Fast Mode, up to 400kHz)  
 **Control Input (IN/TRIG):** PWM / Analog / External Trigger (Selectable)  
