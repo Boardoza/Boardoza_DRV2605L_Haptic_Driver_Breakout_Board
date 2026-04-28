@@ -4,18 +4,18 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-// Varsayılan I2C adresi (datasheet'e göre genelde 0x5A kullanılır,
-// ancak kartınıza göre 0x5B, 0x5C veya 0x59 da olabilir)
+// Default I2C address (usually 0x5A according to the datasheet,
+// but it can also be 0x5B, 0x5C, or 0x59 depending on your board)
 #define DRV2605L_I2C_ADDR  0x5A  
 
-// --- KULLANILACAK TEMEL REGISTER ADRESLERİ ---
+// --- BASIC REGISTER ADDRESSES TO BE USED ---
 #define DRV2605L_REG_STATUS         0x00
 #define DRV2605L_REG_MODE           0x01
 #define DRV2605L_REG_RTP_IN         0x02
 #define DRV2605L_REG_LIBRARY        0x03
 #define DRV2605L_REG_WAVESEQ1       0x04
 #define DRV2605L_REG_WAVESEQ2       0x05
-// ... buraya ihtiyaca göre ek wave sekans registerları eklenebilir (0x06, 0x07 vb.)
+// ... additional wave sequence registers can be added here as needed (0x06, 0x07 etc.)
 #define DRV2605L_REG_GO             0x0C
 #define DRV2605L_REG_FEEDBACK       0x1A
 #define DRV2605L_REG_CONTROL1       0x1B
@@ -29,7 +29,7 @@
 #define DRV2605L_REG_RATEDV         0x16
 #define DRV2605L_REG_CLAMPV         0x17
 
-// --- MODE REGISTER DEĞERLERİ (0x01) ---
+// --- MODE REGISTER VALUES (0x01) ---
 #define DRV2605L_MODE_INTTRIG       0x00  // Internal Trigger (Waveform Sequencer)
 #define DRV2605L_MODE_EXTTRIGEDGE   0x01  // External Trigger (Edge)
 #define DRV2605L_MODE_EXTTRIGLVL    0x02  // External Trigger (Level)
@@ -41,35 +41,31 @@
 
 class DRV2605L {
 public:
-  // Kurucu
   DRV2605L();
 
-  // Başlatma fonksiyonu
   bool begin(TwoWire &wirePort = Wire, uint8_t i2cAddr = DRV2605L_I2C_ADDR);
-
-  // Mode ayarlama (MODE registerine yazar)
   void setMode(uint8_t mode);
 
-  // Basit register yazma/okuma fonksiyonları
+  // Basic register read/write functions
   void writeRegister8(uint8_t reg, uint8_t val);
   uint8_t readRegister8(uint8_t reg);
 
-  // Dalgaformu (Waveform) tanımlama
-  // örn: setWaveform(1, 47);  // 1. dalgaform slotuna ROM ID 47'yi koy
+  // Waveform definition
+  // e.g., setWaveform(1, 47);  // Put ROM ID 47 into waveform slot 1
   void setWaveform(uint8_t slot, uint8_t waveform);
 
-  // Hafızadaki (ROM) dalgaformlarını çalma başlatma/durdurma
+  // Start/stop playing waveforms from memory (ROM)
   void go(void);
   void stop(void);
 
-  // RTP modunda anlık genlik gönderme
+  // Send real-time amplitude in RTP mode
   void setRealtimeValue(uint8_t rtpVal);
 
-  // Tipik parametre ayarları (örn. rated voltage, overdrive clamp vb.)
+  // Typical parameter settings (e.g., rated voltage, overdrive clamp, etc.)
   void setRatedVoltage(uint8_t val);
   void setOverdriveClampVoltage(uint8_t val);
 
-  // Kendi basit auto-cal fonksiyonumuz (opsiyonel, datasheet'e göre özelleştirilebilir)
+  // Our own simple auto-cal function (optional, can be customized according to the datasheet)
   bool autoCalibrate(uint8_t ratedVolt, uint8_t clampVolt);
 
 private:
